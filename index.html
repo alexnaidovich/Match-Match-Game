@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Match Match Game</title>
+  <link rel="stylesheet" href="css/hihglight.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/hall.css">
+  <link rel="stylesheet" href="css/logo.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/components/Card.js"></script>
+  <script src="js/components/Highlight.js"></script>
+  <script src="js/components/Gameplay.js"></script>
+  <script src="js/components/Player.js"></script>
+  <script src="js/components/Timer.js"></script>
+  <script src="js/components/HallOfFame.js"></script>
+</head>
+<body>
+  <!-- begin a container -->
+  <div class="field-container field-hidden" id="field"><div class="timer" id="timer"></div></div>
+  <!-- end a container -->
+
+  <div class="ui ui-hidden" id="ui">
+    <div class="ui-left">
+      <div class="greets" id="greets">
+        <h2></h2>
+        <p>This is a classic memory game.</p>
+        <p>Your task is to clear the field from cards by matching them in pairs.</p>
+        <p>Each time you match a pair, this pair removes from the field. Each time you don't match, the pair turns backwards and stays on the field.</p>
+        <p>The faster you go, the better you are! Good luck!</p>
+      </div>
+      <div class="controls" id="controls">
+        <h3>You can choose between:</h3>
+        <div class="props">
+          <div class="difficulty" id="diff">Difficulty
+            <div class="labels">
+              <label>
+                <p class="p-center">Easy</p><input name="difficulty" type="radio" checked><p>8 cards</p>
+              </label>
+              <label>
+                <p class="p-center">Medium</p><input name="difficulty" type="radio"><p>16 cards</p>
+              </label>
+              <label>
+                <p class="p-center">Hard</p><input name="difficulty" type="radio"><p>24 cards</p>
+              </label>
+            </div>
+          </div>
+          
+          <div class="skirts" id="skirts">Backside
+            <div class="labels">
+              <label>
+                <div class="backs"><img src="img/backs/1.png" alt=""></div>
+                <input name="backside" type="radio" checked><p>MMG logo</p>
+              </label>
+              <label>
+                <div class="backs"><img src="img/backs/2.png" alt=""></div>
+                <input name="backside" type="radio"><p>AN logo</p>
+              </label>
+              <label>
+                <div class="backs"><img src="img/backs/3.png" alt=""></div>
+                <input name="backside" type="radio"><p>RS logo</p>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" name="start" id="start" class="displayed">Start Game</button>
+        <button type="button" name="logout" id="logout" class="displayed">Log Out</button>
+      </div>
+    </div>
+    <div class="ui-right">
+      <div class="logo" id="logo"></div>
+      <div class="hall-of-fame" id="hall">
+        <h2>Top-10 results for the difficulty <span></span></h2>
+        <div class="hall-of-fame--table">
+          <div class="hall-of-fame--col">
+            <div class="hall-of-fame--header">Name</div>
+            <div class="hall-of-fame--content">
+              <ul id="hall-name"></ul>
+            </div>
+          </div>
+          
+          <div class="hall-of-fame--col">
+            <div class="hall-of-fame--header">Time</div>
+            <div class="hall-of-fame--content">
+              <ul class="hall-time" id="hall-time"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="login-form login-form--visible login-form--pseudo" id="login-form">
+    <div class="push mmg-logo">
+      <div class="logo2" id="login-logo">
+        <div class="logo-container">
+          <div class="logo-circle"></div>
+          <div class="logo-text m1">MATCH</div>
+          <div class="logo-text m2">MATCH</div>
+          <div class="logo-text g">GAME</div>
+        </div>
+      </div>
+    </div>
+    <form action="#" id="login" onsubmit="login()">
+      <label><input type="text" required placeholder="Your name"></label>
+      <label><input type="text" required placeholder="Your surname"></label>
+      <label><input type="email" required placeholder="Your email"></label>
+      <button type="submit" class="displayed">Log In</button>
+    </form>
+  </div>
+  
+  <div class="game-over game-over--hidden" id="game-over-screen">
+    <div class="game-over-logo" id="game-over-logo"></div>
+    <div class="game-over-text game-over-text--hidden" id="game-over-text"></div>
+  </div>
+  
+  
+  
+  
+
+  <!-- <div class="logo" id="logo">
+    <div class="logo-container">
+      <div class="logo-circle"></div>
+      <div class="logo-text m1">MATCH</div>
+      <div class="logo-text m2">MATCH</div>
+      <div class="logo-text g">GAME</div>
+    </div>
+  </div> -->
+  
+  <script>
+
+    // Animation Test
+    
+    const loginForm = document.querySelector('#login');
+    const labels = loginForm.querySelectorAll('label');
+    const inputss = loginForm.querySelectorAll('input');
+    
+    for (let i = 0; i < inputss.length; i++) {
+      inputss[i].addEventListener('focus', function(e) {
+        for (let j = 0; j < labels.length; j++) {
+          labels[j].classList.remove('onfocus');
+          labels[j].classList.add('onblur');
+        }
+        labels[i].classList.remove('onblur');
+        labels[i].classList.add('onfocus');
+      });
+      inputss[i].addEventListener('blur', function(e) {
+        for (let j = 0; j < labels.length; j++) {
+          labels[j].classList.remove('onfocus');
+          labels[j].classList.add('onblur');
+        }
+      });
+    }
+  
+  </script>
+  
+  <script src="js/index.js"></script>
+    
+</body>
+</html>

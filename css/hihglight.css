@@ -1,0 +1,45 @@
+.highlight {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: transparent;
+  box-shadow: 0 0 0px #fff,
+              0 0 0px yellow,
+              0 0 0px red;
+  animation: blink .7s ease-in-out;
+}
+
+@keyframes blink {
+  25% {
+    box-shadow: 0 0 60px #fff,
+                0 0 60px yellow,
+                0 0 60px red;
+    background-color: red;
+  }
+  50% {
+    box-shadow: 0 0 30px #fff,
+                0 0 30px yellow,
+                0 0 30px red;
+  }
+  75% {
+    box-shadow: 0 0 50px #fff,
+                0 0 50px yellow,
+                0 0 50px red;
+  }
+  100% {
+    box-shadow: 0 0 0px #fff,
+                0 0 0px yellow,
+                0 0 0px red;
+    background-color: transparent;
+  }
+}
+
+.highlight div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ddd;
+  z-index: 2;
+}

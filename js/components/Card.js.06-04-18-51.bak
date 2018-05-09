@@ -1,0 +1,86 @@
+class Card {
+  constructor(field) {
+    this.field = document.querySelector('#field');
+    this.el = this.field.appendChild(document.createElement('div'));
+    this.el.classList.add('card');
+    this.el.classList.add('blink__container');
+    this.back = this.el.appendChild(document.createElement('div'));
+    this.back.classList.add('card-back');
+    this.backImage = this.back.appendChild(document.createElement('img'));
+    this.backImage.setAttribute("alt", "front");
+    this.backImage.setAttribute("src", "img/pumbaa-1.jpg");
+    this.uniqueId = 0;
+    this.isTurned = false;
+    this.turnedCardsCount = 0;
+  }
+  
+  setUniqueId(num) {
+    this.uniqueId = num;
+    this.setFace(num);
+    return this.uniqueId;
+  }
+  
+  setFace(num) {
+    let front = this.el.appendChild(document.createElement('div'));
+    front.classList.add('card-front');
+    let face = front.appendChild(document.createElement('img'));
+    face.setAttribute("alt", "Face");
+    face.setAttribute('src', 'img/faces/' + num + '.png');   
+  };
+  
+  turnCard(elem) {
+    let that = this;
+    let el = this.el;
+    let turned = this.isTurned;
+    return function(e) {
+      e.preventDefault();
+      elem.classList.toggle('turned-back');
+      turned = turned === false ? true : false;
+      console.log(turned ? 'Face Up' : 'Skirt Up');
+      global__count++;      
+      console.log('current count: ' + global__count);
+      
+      if (global__count === 1) {
+        global__previousCardID = that.uniqueId;
+        elem.classList.add('previous-card');
+        global__previousCard = elem;
+      }
+      
+      if (global__count === 2) {
+        console.log('Prev card: ' + global__previousCard);
+        that.watch();        
+      }
+      
+      if (global__count > 2) {
+        global__previousCard.classList.remove('turned-back');
+        global__previousCard.classList.remove('previous-card');
+        elem.classList.remove('turned-back');
+        global__count = 0;
+      }
+    }
+  }
+  
+  watch() {
+    console.log('Current ID: ' + this.uniqueId + '. Previous ID: ' + global__previousCardID);
+    if (this.uniqueId === global__previousCardID) {
+      this.destroy(this.el);
+      this.destroy(global__previousCard);
+    }
+  }
+  
+//  match() {
+//    if (this.uniqueId === global__previousCardID) {
+//      this.destroy(this.el);
+//      this.destroy(global__previousCard);
+//    }
+//  }
+  
+  destroy(elem) {
+    setTimeout(function() {
+      elem.classList.remove('visible');
+    }, 1500);
+    setTimeout(function() {
+      elem.remove();
+    }, 2100);
+  }
+}

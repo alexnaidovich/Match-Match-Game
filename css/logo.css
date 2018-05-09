@@ -1,0 +1,123 @@
+@font-face {
+  font-family: 'Chunkfive';
+  src: url(../fonts/Chunkfive.otf);
+  font-weight: normal;
+}
+
+.logo, .logo2, .game-over-logo {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.logo2 {
+  transform: scale(2);
+}
+
+.logo-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-circle {
+  width: 80%;
+  height: 80%;
+  background-color: #ccc;
+  box-shadow: 0 0 25px #999, 0 0 25px #999 inset;
+  border-radius: 50%;
+  animation: scaleUp 1.36s ease-in-out;
+}
+
+.logo-text {
+  font-family: 'Chunkfive', serif;
+  position: absolute;
+}
+
+@keyframes scaleUp {
+  from {
+    width: 40%;
+    height: 40%;
+  } to {
+    width: 80%;
+    height: 80%;
+  }
+}
+
+.m1, .m2 {
+  font-size: 30px;
+  
+}
+
+.m1 {
+  right: 25px;
+  top: 30px;
+  color: green;
+  transform: rotate(-2.7deg);
+  text-shadow: 0 0 3px rgb(4, 87, 4);
+  animation: appearFromLeft .4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.m2 {
+  left: 25px;
+  top: 52px;
+  transform: rotate(2.7deg);
+  color: yellowgreen;
+  text-shadow: 0 0 3px rgb(22, 31, 4);
+  animation: appearFromRight .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.g {
+  color: red;
+  font-size: 40px;
+  text-shadow: 0 0 3px rgb(153, 8, 8);
+  top: 72px;
+  animation: appearFromTop 1.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes appearFromLeft {
+  from {
+    opacity: 0;
+    right: 350px;
+  } to {
+    opacity: 1;
+    right: 25px;
+  }
+}
+
+@keyframes appearFromRight {
+  0% {
+    opacity: 0;
+    left: 350px;
+  }
+  50% {
+    opacity: 0;
+    left: 350px;
+  } 
+  100% {
+    opacity: 1;
+    left: 25px;
+  }
+}
+
+@keyframes appearFromTop {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+    font-size: 200px;
+  }
+  100% {
+    opacity: 1;
+    font-size: 40px;
+  }
+}
+
+.login-logo--hidden div {
+  font-size: 0px;
+  transition: .4s ease;
+}

@@ -1,0 +1,76 @@
+.hall-of-fame {
+  width: 100%;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  border-radius: 6px;
+}
+
+.hall-of-fame h2 {
+  font-size: 20px;
+  font-weight: bold; 
+  text-align: center; 
+}
+
+.hall-of-fame--table {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.hall-of-fame--col {
+  display: flex;
+  flex-direction: column;
+}
+
+.hall-of-fame--table > div:first-child {
+  width: 75%;
+}
+.hall-of-fame--table > div:last-child {
+  width: 25%;
+}
+
+.hall-of-fame--header {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  height: 35px;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eec;
+}
+
+.hall-of-fame--content{
+  width: 100%;
+}
+
+.hall-of-fame ul {
+  width: 100%;
+  margin: 0;
+  list-style: none;
+  padding: 15px 0;
+}
+
+.hall-time {
+  text-align: right;
+}
+
+.hall-of-fame li {
+  animation: colorize 2s linear;
+}
+
+@keyframes colorize {
+  0% {
+    color: red;
+  }
+  
+  100% {
+    color: #000;
+  }
+}
