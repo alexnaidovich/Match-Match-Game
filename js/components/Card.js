@@ -50,12 +50,14 @@ class Card {
           elem.classList.remove('turned-back');
         } else {
           that.watch();
+          togglePointerEvents();
           if (!global__match) {
             setTimeout(function() {
               global__previousCard.classList.remove('turned-back');
               elem.classList.remove('turned-back');
               global__previousCard = undefined;
               global__previousCardID = 0;
+              togglePointerEvents();
             }, 500);
           }
         }
@@ -70,7 +72,8 @@ class Card {
     if (this.uniqueId === global__previousCardID) {
       global__match = true;
       this.destroy(this.el);
-      this.destroy(global__previousCard);      
+      this.destroy(global__previousCard);  
+      togglePointerEvents();    
     }
   }
   

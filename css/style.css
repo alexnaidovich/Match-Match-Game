@@ -80,6 +80,10 @@ html, body {
   }
 }
 
+.disable-pointer-events {
+  pointer-events: none;
+}
+
 .card {
   width: 100px;
   height: 150px;

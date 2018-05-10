@@ -286,6 +286,11 @@ const global__matchWatch = () => {
   }
 }
 
+const togglePointerEvents = () => {
+  let cards = UI.field.querySelectorAll('.card');
+  cards.forEach(c => c.classList.toggle('disable-pointer-events'));
+}
+
 UI.diffChecks.forEach(check => {
   check.addEventListener('change', setDifficulty);
 });
