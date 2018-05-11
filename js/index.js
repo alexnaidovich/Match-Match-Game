@@ -286,9 +286,14 @@ const global__matchWatch = () => {
   }
 }
 
-const togglePointerEvents = () => {
+const disablePointerEvents = () => {
   let cards = UI.field.querySelectorAll('.card');
-  cards.forEach(c => c.classList.toggle('disable-pointer-events'));
+  cards.forEach(c => c.classList.add('disable-pointer-events'));
+}
+
+const enablePointerEvents = () => {
+  let cards = UI.field.querySelectorAll('.card');
+  cards.forEach(c => c.classList.remove('disable-pointer-events'));
 }
 
 UI.diffChecks.forEach(check => {

@@ -41,26 +41,21 @@ class Card {
       if (global__count === 1) {
         global__previousCardID = that.uniqueId;
         global__previousCard = elem;
+        elem.classList.add('disable-pointer-events');
       }
       
       if (global__count === 2) {  
-        if (elem === global__previousCard) {
-          global__previousCard = undefined;
-          global__previousCardID = 0;
-          elem.classList.remove('turned-back');
-        } else {
-          that.watch();
-          togglePointerEvents();
-          if (!global__match) {
-            setTimeout(function() {
-              global__previousCard.classList.remove('turned-back');
-              elem.classList.remove('turned-back');
-              global__previousCard = undefined;
-              global__previousCardID = 0;
-              togglePointerEvents();
-            }, 500);
-          }
-        }
+        disablePointerEvents();
+        that.watch();
+        if (!global__match) {
+          setTimeout(function() {
+            global__previousCard.classList.remove('turned-back');
+            elem.classList.remove('turned-back');
+            global__previousCard = undefined;
+            global__previousCardID = 0;
+            enablePointerEvents();
+          }, 500);
+        }      
         
         global__count = 0; 
         global__match = false;
@@ -73,7 +68,7 @@ class Card {
       global__match = true;
       this.destroy(this.el);
       this.destroy(global__previousCard);  
-      togglePointerEvents();    
+      enablePointerEvents();    
     }
   }
   
